@@ -1,0 +1,2748 @@
+{
+ "frame": "world: gimbal pivot at origin, +Z toward nose; metres / kg / kg m^2. Inertia about the state CG; Ixx/Iyy are pitch/yaw (legs at 45/135/225/315 deg so Ixx ~= Iyy), Izz roll.",
+ "stations_m": {
+  "nose_tip_z": 0.505,
+  "aft_end_of_body_z": -0.014,
+  "aft_end_of_ascent_motor_z": -0.134,
+  "claw_tips_z": -0.0673,
+  "landing_motor_nozzle_exit_z": -0.008,
+  "foot_ball_bottom_deployed_z": -0.1638,
+  "footprint_m": 0.597
+ },
+ "assumptions": {
+  "PAHT-CF": "1.06 g/cc; printed mass = solid x 0.97",
+  "CF tubes": "pultruded 1.55 g/cc",
+  "foot balls": "EPS craft ball 25 mm, 0.020 g/cc",
+  "legs": "deployed = 119 deg about the hinge pin, keeper ring released (-9 deg)",
+  "spring plunger / torsion spring": "datasheet-style overrides 3.0 g / 0.6 g - VERIFY",
+  "F15-0": "94.0 g loaded / 33.0 g burnt (NAR cert); burnt CG assumed 42 % from nozzle end",
+  "servos": "KST X08H Plus 9.5 g (verify)",
+  "pushrods": "1.9 g (verify)",
+  "placeholders": "roll wheel 60 g @ z204.5, avionics 40 g @ z335, battery 35 g @ z320, wiring 10 g @ z200 (edit)",
+  "products of inertia": "full tensors used; Ixy etc. reported in JSON"
+ },
+ "states": {
+  "A_liftoff_legs_stowed": {
+   "mass_kg": 1.0002942104313532,
+   "cg_m": [
+    0.0006174686123476389,
+    0.000579898738335701,
+    0.09933545237841893
+   ],
+   "cg_from_nose_tip_m": 0.4056645476215811,
+   "cg_above_aft_end_of_body_m": 0.11333545237841892,
+   "cg_above_ascent_motor_aft_end_m": 0.23333545237841893,
+   "cg_above_ground_on_feet_m": 0.26313545237841895,
+   "Ixx_cg": 0.02089433654117813,
+   "Iyy_cg": 0.020916026552866944,
+   "Izz_cg": 0.0010139647507531548,
+   "Ixy": -5.6876519629655725e-06,
+   "Ixz": 4.74764101123188e-05,
+   "Iyz": -2.889014910778758e-05
+  },
+  "B_landing_motor_loaded_legs_stowed": {
+   "mass_kg": 0.90629425597426,
+   "cg_m": [
+    0.000681511853647916,
+    0.0006400452687080946,
+    0.11762479315651281
+   ],
+   "cg_from_nose_tip_m": 0.3873752068434872,
+   "cg_above_aft_end_of_body_m": 0.13162479315651282,
+   "cg_above_ascent_motor_aft_end_m": 0.2516247931565128,
+   "cg_above_ground_on_feet_m": 0.2814247931565128,
+   "Ixx_cg": 0.017561550802556405,
+   "Iyy_cg": 0.017583236148354244,
+   "Izz_cg": 0.0010040085606941498,
+   "Ixy": -5.650502441574611e-06,
+   "Ixz": 5.877282658481895e-05,
+   "Iyz": -1.8281063079852732e-05
+  },
+  "B_landing_motor_loaded_legs_deployed": {
+   "mass_kg": 0.90629425597426,
+   "cg_m": [
+    0.0006831548094578788,
+    0.0006396044740099567,
+    0.09612166786959361
+   ],
+   "cg_from_nose_tip_m": 0.40887833213040636,
+   "cg_above_aft_end_of_body_m": 0.11012166786959361,
+   "cg_above_ascent_motor_aft_end_m": 0.23012166786959362,
+   "cg_above_ground_on_feet_m": 0.2599216678695936,
+   "Ixx_cg": 0.021596021288352505,
+   "Iyy_cg": 0.021617719792944107,
+   "Izz_cg": 0.004134014603759675,
+   "Ixy": -5.692815426291601e-06,
+   "Ixz": 4.526732085194845e-05,
+   "Iyz": -3.0695373005190994e-05
+  },
+  "C_landing_burnout_legs_deployed": {
+   "mass_kg": 0.845294301517167,
+   "cg_m": [
+    0.0007324541037679571,
+    0.0006857609945438503,
+    0.09916612184185927
+   ],
+   "cg_from_nose_tip_m": 0.40583387815814076,
+   "cg_above_aft_end_of_body_m": 0.11316612184185927,
+   "cg_above_ascent_motor_aft_end_m": 0.23316612184185928,
+   "cg_above_ground_on_feet_m": 0.2629661218418593,
+   "Ixx_cg": 0.021416285839021398,
+   "Iyy_cg": 0.021437980577303246,
+   "Izz_cg": 0.004131013830511857,
+   "Ixy": -5.664238111216934e-06,
+   "Ixz": 4.715226190587782e-05,
+   "Iyz": -2.893059479459949e-05
+  }
+ },
+ "sections": {
+  "Aft structure + TVC drive": {
+   "mass_kg": 0.13728834373240228,
+   "cg_m": [
+    0.004686199417202369,
+    0.001629337258540731,
+    0.04087259587681534
+   ],
+   "Ixx_cg": 0.00029614533017824265,
+   "Iyy_cg": 0.0002896704105335803,
+   "Izz_cg": 0.00020589546016637226,
+   "count": 19
+  },
+  "Aft structure + TVC drive [legs deployed]": {
+   "mass_kg": 0.13728834373240228,
+   "cg_m": [
+    0.004686199417202369,
+    0.001629337258540731,
+    0.04087259587681534
+   ],
+   "Ixx_cg": 0.00029614533017824265,
+   "Iyy_cg": 0.0002896704105335803,
+   "Izz_cg": 0.00020589546016637226,
+   "count": 19
+  },
+  "Forward body": {
+   "mass_kg": 0.17329849936674263,
+   "cg_m": [
+    -6.860296191216323e-06,
+    0.00013678998017981409,
+    0.2646925825958587
+   ],
+   "Ixx_cg": 0.0021283584634427823,
+   "Iyy_cg": 0.0021278321869656613,
+   "Izz_cg": 0.00023070816350167085,
+   "count": 28
+  },
+  "Forward body [legs deployed]": {
+   "mass_kg": 0.17329849936674263,
+   "cg_m": [
+    -6.860296191216323e-06,
+    0.00013678998017981409,
+    0.2646925825958587
+   ],
+   "Ixx_cg": 0.0021283584634427823,
+   "Iyy_cg": 0.0021278321869656613,
+   "Izz_cg": 0.00023070816350167085,
+   "count": 28
+  },
+  "Gimbal - cartridge (pitch)": {
+   "mass_kg": 0.18863720842990947,
+   "cg_m": [
+    0.00018781271092439955,
+    0.0001603682288531431,
+    -0.020342768386132824
+   ],
+   "Ixx_cg": 0.0003801005333206237,
+   "Iyy_cg": 0.0004080443048454203,
+   "Izz_cg": 8.343324904471707e-05,
+   "count": 39
+  },
+  "Gimbal - cartridge (pitch) [legs deployed]": {
+   "mass_kg": 0.18863720842990947,
+   "cg_m": [
+    0.00018781271092439955,
+    0.0001603682288531431,
+    -0.020342768386132824
+   ],
+   "Ixx_cg": 0.0003801005333206237,
+   "Iyy_cg": 0.0004080443048454203,
+   "Izz_cg": 8.343324904471707e-05,
+   "count": 39
+  },
+  "Gimbal - outer ring (yaw)": {
+   "mass_kg": 0.017433104934839905,
+   "cg_m": [
+    3.011986701967445e-16,
+    2.477968237524753e-17,
+    -2.2611217692845495e-05
+   ],
+   "Ixx_cg": 1.00745303967263e-05,
+   "Iyy_cg": 5.947823127518798e-06,
+   "Izz_cg": 1.571039973907438e-05,
+   "count": 9
+  },
+  "Gimbal - outer ring (yaw) [legs deployed]": {
+   "mass_kg": 0.017433104934839905,
+   "cg_m": [
+    3.011986701967445e-16,
+    2.477968237524753e-17,
+    -2.2611217692845495e-05
+   ],
+   "Ixx_cg": 1.00745303967263e-05,
+   "Iyy_cg": 5.947823127518798e-06,
+   "Izz_cg": 1.571039973907438e-05,
+   "count": 9
+  },
+  "Landing legs": {
+   "mass_kg": 0.1356637739265251,
+   "cg_m": [
+    2.4375089461035824e-17,
+    -1.9579989894930415e-17,
+    0.08774089593252464
+   ],
+   "Ixx_cg": 0.0015721302354922521,
+   "Iyy_cg": 0.0015721302354922521,
+   "Izz_cg": 0.0003679941982285705,
+   "count": 28
+  },
+  "Landing legs [legs deployed]": {
+   "mass_kg": 0.1356637739265251,
+   "cg_m": [
+    -1.3586115437298656e-17,
+    -4.195712120342232e-17,
+    -0.05590953018332601
+   ],
+   "Ixx_cg": 0.0020614361806224526,
+   "Iyy_cg": 0.002061436180622454,
+   "Izz_cg": 0.003498038579315774,
+   "count": 28
+  },
+  "Leg keeper (ring + servo)": {
+   "mass_kg": 0.014973371126747886,
+   "cg_m": [
+    -0.004003765332252567,
+    0.02019741720964813,
+    0.23902796529911285
+   ],
+   "Ixx_cg": 5.837421459874186e-06,
+   "Iyy_cg": 4.111110231591051e-06,
+   "Izz_cg": 7.983967997596384e-06,
+   "count": 8
+  },
+  "Leg keeper (ring + servo) [legs deployed]": {
+   "mass_kg": 0.014973371126747886,
+   "cg_m": [
+    -0.0039043220338270037,
+    0.020170737198874238,
+    0.23902796529911285
+   ],
+   "Ixx_cg": 5.827288507270405e-06,
+   "Iyy_cg": 4.1123277614929476e-06,
+   "Izz_cg": 7.9750525748945e-06,
+   "count": 8
+  },
+  "Motor - ascent": {
+   "mass_kg": 0.0939999544570931,
+   "cg_m": [
+    -3.0324713027445124e-12,
+    0.0,
+    -0.077
+   ],
+   "Ixx_cg": 0.00010674282360223324,
+   "Iyy_cg": 0.00010674282232603176,
+   "Izz_cg": 9.881744574201186e-06,
+   "count": 1
+  },
+  "Motor - ascent [legs deployed]": {
+   "mass_kg": 0.0939999544570931,
+   "cg_m": [
+    -3.0324713027445124e-12,
+    0.0,
+    -0.077
+   ],
+   "Ixx_cg": 0.00010674282360223324,
+   "Iyy_cg": 0.00010674282232603176,
+   "Izz_cg": 9.881744574201186e-06,
+   "count": 1
+  },
+  "Motor - landing": {
+   "mass_kg": 0.0939999544570931,
+   "cg_m": [
+    -3.0324713027445124e-12,
+    0.0,
+    0.04900000000000001
+   ],
+   "Ixx_cg": 0.00010674282360223315,
+   "Iyy_cg": 0.00010674282232603168,
+   "Izz_cg": 9.881744574201186e-06,
+   "count": 1
+  },
+  "Motor - landing [legs deployed]": {
+   "mass_kg": 0.0939999544570931,
+   "cg_m": [
+    -3.0324713027445124e-12,
+    0.0,
+    0.04900000000000001
+   ],
+   "Ixx_cg": 0.00010674282360223315,
+   "Iyy_cg": 0.00010674282232603168,
+   "Izz_cg": 9.881744574201186e-06,
+   "count": 1
+  },
+  "Placeholders (editable)": {
+   "mass_kg": 0.14500000000000002,
+   "cg_m": [
+    0.0,
+    0.0,
+    0.26806896551724135
+   ],
+   "Ixx_cg": 0.0006006572270114946,
+   "Iyy_cg": 0.0006105218103448279,
+   "Izz_cg": 7.345125000000002e-05,
+   "count": 4
+  },
+  "Placeholders (editable) [legs deployed]": {
+   "mass_kg": 0.14500000000000002,
+   "cg_m": [
+    0.0,
+    0.0,
+    0.26806896551724135
+   ],
+   "Ixx_cg": 0.0006006572270114946,
+   "Iyy_cg": 0.0006105218103448279,
+   "Izz_cg": 7.345125000000002e-05,
+   "count": 4
+  }
+ },
+ "gimbal": {
+  "pitch_body_cartridge_stateA": {
+   "mass_kg": 0.37663711734409566,
+   "cg_rel_pivot_m": [
+    9.406525086044697e-05,
+    8.031979223138564e-05,
+    -0.01717675042362984
+   ],
+   "I_about_pivot_Ixx": 0.0014546740537674425,
+   "I_about_pivot_Iyy": 0.0014826196252901395,
+   "I_about_pivot_Izz": 0.00010320824347511394
+  },
+  "yaw_body_cartridge_plus_outer_ring_stateA": {
+   "mass_kg": 0.39407022227893557,
+   "cg_rel_pivot_m": [
+    8.990393824087476e-05,
+    7.676655910908506e-05,
+    -0.01641787575628115
+   ],
+   "I_about_pivot_Ixx": 0.001464748593077143,
+   "I_about_pivot_Iyy": 0.0014885674573306325,
+   "I_about_pivot_Izz": 0.00011891864321418835
+  },
+  "pitch_body_cartridge_stateB": {
+   "mass_kg": 0.2826371628870026,
+   "cg_rel_pivot_m": [
+    0.0001253496350214367,
+    0.00010703268707731896,
+    0.0027193689621365646
+   ],
+   "I_about_pivot_Ixx": 0.0007906055001891043,
+   "I_about_pivot_Iyy": 0.0008185510729880026,
+   "I_about_pivot_Izz": 9.332649890091275e-05
+  },
+  "yaw_body_cartridge_plus_outer_ring_stateB": {
+   "mass_kg": 0.3000702678218425,
+   "cg_rel_pivot_m": [
+    0.00011806722961443132,
+    0.0001008144366694372,
+    0.0025600688470295337
+   ],
+   "I_about_pivot_Ixx": 0.0008006800394988048,
+   "I_about_pivot_Iyy": 0.0008244989050284956,
+   "I_about_pivot_Izz": 0.00010903689863998716
+  },
+  "pitch_body_cartridge_stateC": {
+   "mass_kg": 0.22163720842990947,
+   "cg_rel_pivot_m": [
+    0.00015984890690245356,
+    0.00013649068775955316,
+    -0.01137608192215463
+   ],
+   "I_about_pivot_Ixx": 0.0005498605861353907,
+   "I_about_pivot_Iyy": 0.0005778061602104904,
+   "I_about_pivot_Izz": 9.038300432671156e-05
+  },
+  "yaw_body_cartridge_plus_outer_ring_stateC": {
+   "mass_kg": 0.2390703133647494,
+   "cg_rel_pivot_m": [
+    0.00014819265929678338,
+    0.0001265377310379463,
+    -0.01054818219934991
+   ],
+   "I_about_pivot_Ixx": 0.0005599351254450912,
+   "I_about_pivot_Iyy": 0.0005837539922509834,
+   "I_about_pivot_Izz": 0.00010609340406578597
+  }
+ },
+ "parts": [
+  {
+   "name": "Aft Airframe (thrust structure):1 / Aft Airframe",
+   "section": "Aft structure + TVC drive",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.10938806055000475,
+   "printed_mass_kg": 0.1061064187335046,
+   "cg_m_stowed": [
+    0.0010969502502651517,
+    0.00018082525295907954,
+    0.04123371524389988
+   ],
+   "Ixx_cg": 0.00027548017919595174,
+   "Iyy_cg": 0.00027391262391871386,
+   "Izz_cg": 0.00018081968953047986,
+   "editable": false
+  },
+  {
+   "name": "KST X08H Plus (envelope - verify):1 / KST X08H Plus (envelope - verify)",
+   "section": "Aft structure + TVC drive",
+   "material": "OVERRIDE KST X08H Plus 9.5 g (envelope 3.290 cc)",
+   "process": "purchased",
+   "mass_kg": 0.009500127766274334,
+   "printed_mass_kg": 0.009500127766274334,
+   "cg_m_stowed": [
+    0.027260338248697454,
+    -0.015786629440828252,
+    0.043282943309689695
+   ],
+   "Ixx_cg": 6.715826609517325e-07,
+   "Iyy_cg": 5.824141232767639e-07,
+   "Izz_cg": 2.867754737321664e-07,
+   "editable": false
+  },
+  {
+   "name": "KST X08H Plus (envelope - verify):2 / KST X08H Plus (envelope - verify)",
+   "section": "Aft structure + TVC drive",
+   "material": "OVERRIDE KST X08H Plus 9.5 g (envelope 3.290 cc)",
+   "process": "purchased",
+   "mass_kg": 0.009500127766274334,
+   "printed_mass_kg": 0.009500127766274334,
+   "cg_m_stowed": [
+    0.01578662944082825,
+    0.027260338248697454,
+    0.043282943309689695
+   ],
+   "Ixx_cg": 5.82414123276764e-07,
+   "Iyy_cg": 6.715826609517327e-07,
+   "Izz_cg": 2.867754737321664e-07,
+   "editable": false
+  },
+  {
+   "name": "Pushrod 33.5 mm c-c, M2 rod + heli metal ball links (adjustable):1 / Pushrod 32 mm, M2 rod + heli metal ball links",
+   "section": "Aft structure + TVC drive",
+   "material": "OVERRIDE pushrod assy 1.9 g VERIFY (0.3467 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0018996568977175052,
+   "printed_mass_kg": 0.0018996568977175052,
+   "cg_m_stowed": [
+    0.029717336866347435,
+    -4.848883786362357e-05,
+    0.03374972965892399
+   ],
+   "Ixx_cg": 3.811107662565944e-07,
+   "Iyy_cg": 3.8175880626890417e-07,
+   "Izz_cg": 7.805426505647011e-09,
+   "editable": false
+  },
+  {
+   "name": "Pushrod 33.5 mm c-c, M2 rod + heli metal ball links (adjustable):2 / Pushrod 32 mm, M2 rod + heli metal ball links",
+   "section": "Aft structure + TVC drive",
+   "material": "OVERRIDE pushrod assy 1.9 g VERIFY (0.3467 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0018996568977175052,
+   "printed_mass_kg": 0.0018996568977175052,
+   "cg_m_stowed": [
+    4.8488837863628454e-05,
+    0.029717336866347435,
+    0.03374972965892399
+   ],
+   "Ixx_cg": 3.817588062689042e-07,
+   "Iyy_cg": 3.8111076625659437e-07,
+   "Izz_cg": 7.805426505647011e-09,
+   "editable": false
+  },
+  {
+   "name": "MF84ZZ flanged bearing 4x8x3 (1):3 / MF84ZZ flanged bearing 4x8x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Bearing steel (7.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0009580249098010642,
+   "printed_mass_kg": 0.0009580249098010642,
+   "cg_m_stowed": [
+    -5.649474444429094e-19,
+    0.0353450276243094,
+    1.9043022478303948e-13
+   ],
+   "Ixx_cg": 5.880079478130899e-09,
+   "Iyy_cg": 1.0231176080479987e-08,
+   "Izz_cg": 5.880078156800695e-09,
+   "editable": false
+  },
+  {
+   "name": "MF84ZZ flanged bearing 4x8x3 (1):4 / MF84ZZ flanged bearing 4x8x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Bearing steel (7.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0009580249098010642,
+   "printed_mass_kg": 0.0009580249098010642,
+   "cg_m_stowed": [
+    5.649474444429092e-19,
+    -0.0353450276243094,
+    1.9043022478303948e-13
+   ],
+   "Ixx_cg": 5.880079478130899e-09,
+   "Iyy_cg": 1.0231176080479987e-08,
+   "Izz_cg": 5.880078156800695e-09,
+   "editable": false
+  },
+  {
+   "name": "M2 ball stud 4.8 - horn (5 mm shank) (2):1 / M2 ball stud 4.8 - horn (5 mm shank)",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0005246498311777012,
+   "printed_mass_kg": 0.0005246498311777012,
+   "cg_m_stowed": [
+    0.029561323356442674,
+    -0.0004987245590176894,
+    0.05049923829302174
+   ],
+   "Ixx_cg": 1.6824061755470623e-09,
+   "Iyy_cg": 1.296445858376376e-09,
+   "Izz_cg": 1.8908251085094843e-09,
+   "editable": false
+  },
+  {
+   "name": "M2 ball stud 4.8 - horn (5 mm shank) (2):2 / M2 ball stud 4.8 - horn (5 mm shank)",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0005246498311777012,
+   "printed_mass_kg": 0.0005246498311777012,
+   "cg_m_stowed": [
+    0.0004987245590176981,
+    0.029561323356442668,
+    0.050499238293021734
+   ],
+   "Ixx_cg": 1.296445858376376e-09,
+   "Iyy_cg": 1.6824061755470621e-09,
+   "Izz_cg": 1.8908251085094848e-09,
+   "editable": false
+  },
+  {
+   "name": "Servo horn 6 mm (clamped alu, M2 tapped) (1):1 / Servo horn 6 mm (clamped alu, M2 tapped)",
+   "section": "Aft structure + TVC drive",
+   "material": "Aluminium 6061 (2.7 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039429358190362613,
+   "printed_mass_kg": 0.00039429358190362613,
+   "cg_m_stowed": [
+    0.031117679400029796,
+    -0.0057588445076038495,
+    0.04946201184314474
+   ],
+   "Ixx_cg": 2.7548836852898516e-09,
+   "Iyy_cg": 4.679839478782691e-09,
+   "Izz_cg": 4.266774085531953e-09,
+   "editable": false
+  },
+  {
+   "name": "Servo horn 6 mm (clamped alu, M2 tapped) (1):2 / Servo horn 6 mm (clamped alu, M2 tapped)",
+   "section": "Aft structure + TVC drive",
+   "material": "Aluminium 6061 (2.7 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039429358190362613,
+   "printed_mass_kg": 0.00039429358190362613,
+   "cg_m_stowed": [
+    0.0057588445076038565,
+    0.031117679400029796,
+    0.04946201184314474
+   ],
+   "Ixx_cg": 4.67983947878269e-09,
+   "Iyy_cg": 2.7548836852898524e-09,
+   "Izz_cg": 4.266774085531953e-09,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):14 / M2x4 button head screw",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.030959312744484612,
+    -0.009540016881717501,
+    0.029500000000280857
+   ],
+   "Ixx_cg": 4.346348082912299e-10,
+   "Iyy_cg": 2.6776898794106546e-10,
+   "Izz_cg": 5.247425323015613e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):15 / M2x4 button head screw",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.030959312744484612,
+    -0.009540016881717501,
+    0.057000000000280854
+   ],
+   "Ixx_cg": 4.346348082912299e-10,
+   "Iyy_cg": 2.6776898794106546e-10,
+   "Izz_cg": 5.247425323015613e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):16 / M2x4 button head screw",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.00954001688171751,
+    0.030959312744484605,
+    0.029500000000280847
+   ],
+   "Ixx_cg": 2.6776898794106566e-10,
+   "Iyy_cg": 4.3463480829122963e-10,
+   "Izz_cg": 5.247425323015613e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):17 / M2x4 button head screw",
+   "section": "Aft structure + TVC drive",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.00954001688171751,
+    0.030959312744484605,
+    0.057000000000280875
+   ],
+   "Ixx_cg": 2.6776898794106566e-10,
+   "Iyy_cg": 4.3463480829122963e-10,
+   "Izz_cg": 5.247425323015613e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):9 / M2 heat-set insert M2x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.029601033505859818,
+    -0.011833799701911726,
+    0.029499999999749043
+   ],
+   "Ixx_cg": 2.404057896986842e-10,
+   "Iyy_cg": 2.4410318776277915e-10,
+   "Izz_cg": 2.384091594582638e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):10 / M2 heat-set insert M2x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.0296010335058598,
+    -0.01183379970191167,
+    0.05699999999974903
+   ],
+   "Ixx_cg": 2.4040578969868417e-10,
+   "Iyy_cg": 2.441031877627789e-10,
+   "Izz_cg": 2.384091594582637e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):11 / M2 heat-set insert M2x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.011833799701911726,
+    0.029601033505859783,
+    0.029499999999749057
+   ],
+   "Ixx_cg": 2.4410318776277915e-10,
+   "Iyy_cg": 2.404057896986841e-10,
+   "Izz_cg": 2.384091594582637e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):12 / M2 heat-set insert M2x3",
+   "section": "Aft structure + TVC drive",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.011833799701911727,
+    0.02960103350585979,
+    0.05699999999974904
+   ],
+   "Ixx_cg": 2.441031877627791e-10,
+   "Iyy_cg": 2.404057896986843e-10,
+   "Izz_cg": 2.384091594582637e-10,
+   "editable": false
+  },
+  {
+   "name": "Lower Shell (reaction-wheel bay, PAHT-CF):1 / Lower Shell",
+   "section": "Forward body",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0799293485509207,
+   "printed_mass_kg": 0.07753146809439307,
+   "cg_m_stowed": [
+    -1.48767236601599e-05,
+    0.000372172495049223,
+    0.1931916998956749
+   ],
+   "Ixx_cg": 0.00042105106973761974,
+   "Iyy_cg": 0.0004203617303976583,
+   "Izz_cg": 0.00011856069126303546,
+   "editable": false
+  },
+  {
+   "name": "Upper Shell (nose + avionics bay, PAHT-CF):1 / Upper Shell",
+   "section": "Forward body",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0704648750751694,
+   "printed_mass_kg": 0.06835092882291431,
+   "cg_m_stowed": [
+    2.9499993802310697e-09,
+    -9.627898928055182e-11,
+    0.36340878285497147
+   ],
+   "Ixx_cg": 0.0003499340909281566,
+   "Iyy_cg": 0.0003499340990111262,
+   "Izz_cg": 9.347472849435682e-05,
+   "editable": false
+  },
+  {
+   "name": "Deck (PAHT-CF, printed flat, x2: wheel deck + avionics deck):1 / Deck",
+   "section": "Forward body",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.009431972057352717,
+   "printed_mass_kg": 0.009149012895632134,
+   "cg_m_stowed": [
+    -4.020132984953448e-12,
+    -0.0003202935697466216,
+    0.121
+   ],
+   "Ixx_cg": 3.335143054056483e-06,
+   "Iyy_cg": 3.4215475482849583e-06,
+   "Izz_cg": 6.750402620969855e-06,
+   "editable": false
+  },
+  {
+   "name": "Deck (PAHT-CF, printed flat, x2: wheel deck + avionics deck):2 / Deck",
+   "section": "Forward body",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.009431972057352717,
+   "printed_mass_kg": 0.009149012895632134,
+   "cg_m_stowed": [
+    -4.020132984953448e-12,
+    -0.0003202935697466216,
+    0.301
+   ],
+   "Ixx_cg": 3.335143054056483e-06,
+   "Iyy_cg": 3.4215475482849583e-06,
+   "Izz_cg": 6.750402620969855e-06,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):20 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.019457888040469256,
+    0.03370205069464125,
+    0.11650000000000002
+   ],
+   "Ixx_cg": 4.3797222096069744e-10,
+   "Iyy_cg": 2.644315982160885e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):21 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.03891577608142494,
+    -2.8083899933363864e-13,
+    0.11650000000000002
+   ],
+   "Ixx_cg": 1.7766128687522462e-10,
+   "Iyy_cg": 5.247425323015613e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):22 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.01945788804095569,
+    -0.03370205069436041,
+    0.11650000000000002
+   ],
+   "Ixx_cg": 4.3797222092925677e-10,
+   "Iyy_cg": 2.6443159824752914e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):23 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.033500000000280854,
+    -3.7467659521530165e-19,
+    0.12116577608142497
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):24 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.016749999999719156,
+    0.029011851026778696,
+    0.12116577608142497
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):25 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.016749999999719184,
+    -0.02901185102677869,
+    0.12116577608142494
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):26 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.019457888040469263,
+    0.03370205069464125,
+    0.2965
+   ],
+   "Ixx_cg": 4.3797222096069744e-10,
+   "Iyy_cg": 2.644315982160885e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):27 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.03891577608142491,
+    -2.8083899933363864e-13,
+    0.2965
+   ],
+   "Ixx_cg": 1.7766128687522462e-10,
+   "Iyy_cg": 5.247425323015613e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):28 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.019457888040955697,
+    -0.03370205069436041,
+    0.2965
+   ],
+   "Ixx_cg": 4.3797222092925677e-10,
+   "Iyy_cg": 2.6443159824752914e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):29 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.03350000000028085,
+    -3.7467659521530165e-19,
+    0.301165776081425
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):30 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.016749999999719156,
+    0.029011851026778696,
+    0.301165776081425
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):31 / M2x4 button head screw",
+   "section": "Forward body",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.016749999999719156,
+    -0.02901185102677869,
+    0.301165776081425
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):13 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.01822500000021825,
+    0.0315666259678167,
+    0.1164999999999975
+   ],
+   "Ixx_cg": 2.4033181614870976e-10,
+   "Iyy_cg": 2.441771295295935e-10,
+   "Izz_cg": 2.3840919124140983e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):14 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.036449999999999406,
+    2.511357220291764e-13,
+    0.11649999999999744
+   ],
+   "Ixx_cg": 2.460997862200433e-10,
+   "Iyy_cg": 2.3840915945826017e-10,
+   "Izz_cg": 2.3840919124140983e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):15 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.01822499999978336,
+    -0.031566625968068404,
+    0.1164999999999975
+   ],
+   "Ixx_cg": 2.403318161487101e-10,
+   "Iyy_cg": 2.4417712952959336e-10,
+   "Izz_cg": 2.3840919124140983e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):16 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.03349999999974989,
+    -5.253740741078809e-16,
+    0.11849999999999747
+   ],
+   "Ixx_cg": 2.3840915945826545e-10,
+   "Iyy_cg": 2.384091912414181e-10,
+   "Izz_cg": 2.4609978622002935e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):17 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.016750000000250176,
+    0.029011851026778446,
+    0.11849999999999741
+   ],
+   "Ixx_cg": 2.3840915945826545e-10,
+   "Iyy_cg": 2.384091912414181e-10,
+   "Izz_cg": 2.4609978622002935e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):18 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.016750000000250398,
+    -0.029011851026778508,
+    0.11849999999999741
+   ],
+   "Ixx_cg": 2.3840915945826545e-10,
+   "Iyy_cg": 2.384091912414181e-10,
+   "Izz_cg": 2.4609978622002935e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):19 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.018225000000217345,
+    0.0315666259678173,
+    0.2965
+   ],
+   "Ixx_cg": 2.4033181614870805e-10,
+   "Iyy_cg": 2.441771295295973e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):20 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.03645,
+    2.509683836637917e-13,
+    0.2965
+   ],
+   "Ixx_cg": 2.4609978622004155e-10,
+   "Iyy_cg": 2.384091594582638e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):21 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.018224999999782658,
+    -0.03156662596806828,
+    0.2965
+   ],
+   "Ixx_cg": 2.403318161487084e-10,
+   "Iyy_cg": 2.4417712952959693e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):22 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.03349999999974903,
+    1.27409540840438e-18,
+    0.2985
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.384091912414217e-10,
+   "Izz_cg": 2.4609978622004155e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):23 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.016750000000250957,
+    0.029011851026778692,
+    0.2985
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.384091912414217e-10,
+   "Izz_cg": 2.4609978622004155e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):24 / M2 heat-set insert M2x3",
+   "section": "Forward body",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.016750000000250974,
+    -0.029011851026778692,
+    0.2985
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.384091912414217e-10,
+   "Izz_cg": 2.4609978622004155e-10,
+   "editable": false
+  },
+  {
+   "name": "Cartridge (sleeve + inner ring):1 / Cartridge",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.06690757029849691,
+   "printed_mass_kg": 0.06490034318954199,
+   "cg_m_stowed": [
+    0.00017630836826440017,
+    0.00014170059631091,
+    0.02191015564563042
+   ],
+   "Ixx_cg": 0.00013662017816112727,
+   "Iyy_cg": 0.00013881628574155102,
+   "Izz_cg": 2.1735842620743983e-05,
+   "editable": false
+  },
+  {
+   "name": "Blocker claw (Macor ceramic, crescent, x2):1 / Blocker claw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Macor (2.52 g/cc)",
+   "process": "machined (Macor)",
+   "mass_kg": 0.03194467793825611,
+   "printed_mass_kg": 0.03194467793825611,
+   "cg_m_stowed": [
+    0.01580205630493856,
+    0.0,
+    -0.05625247572698317
+   ],
+   "Ixx_cg": 4.568108396042558e-06,
+   "Iyy_cg": 2.879923934552815e-06,
+   "Izz_cg": 4.612157886012713e-06,
+   "editable": false
+  },
+  {
+   "name": "Blocker claw (Macor ceramic, crescent, x2):2 / Blocker claw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Macor (2.52 g/cc)",
+   "process": "machined (Macor)",
+   "mass_kg": 0.03194467793825611,
+   "printed_mass_kg": 0.03194467793825611,
+   "cg_m_stowed": [
+    -0.01580205630493856,
+    0.0,
+    -0.05625247572698317
+   ],
+   "Ixx_cg": 4.568108396042558e-06,
+   "Iyy_cg": 2.879923934552815e-06,
+   "Izz_cg": 4.612157886012713e-06,
+   "editable": false
+  },
+  {
+   "name": "KST X08H Plus (blocker, lower ear trimmed):1 / Body2",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "OVERRIDE KST X08H Plus trimmed 9.5 g (envelope 3.2336 cc)",
+   "process": "purchased",
+   "mass_kg": 0.009500137792599145,
+   "printed_mass_kg": 0.009500137792599145,
+   "cg_m_stowed": [
+    0.023,
+    0.009282398948732326,
+    -0.02804370705021568
+   ],
+   "Ixx_cg": 6.917850781319755e-07,
+   "Iyy_cg": 5.106220303567143e-07,
+   "Izz_cg": 2.8224264285845277e-07,
+   "editable": false
+  },
+  {
+   "name": "KST X08H Plus (blocker, lower ear trimmed):2 / Body2",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "OVERRIDE KST X08H Plus trimmed 9.5 g (envelope 3.2336 cc)",
+   "process": "purchased",
+   "mass_kg": 0.009500137792599145,
+   "printed_mass_kg": 0.009500137792599145,
+   "cg_m_stowed": [
+    -0.02299999999999999,
+    -0.009282398948732408,
+    -0.02804370705021564
+   ],
+   "Ixx_cg": 6.917850781319774e-07,
+   "Iyy_cg": 5.106220303567113e-07,
+   "Izz_cg": 2.8224264285845235e-07,
+   "editable": false
+  },
+  {
+   "name": "Blocker clevis plate (1.2 mm 304 stainless, laser cut, x2 identical):1 / Clevis plate",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "laser cut 304",
+   "mass_kg": 0.00942168226782969,
+   "printed_mass_kg": 0.00942168226782969,
+   "cg_m_stowed": [
+    0.003870060214097815,
+    0.018100000000000005,
+    -0.03797202453976825
+   ],
+   "Ixx_cg": 7.142478727308995e-07,
+   "Iyy_cg": 2.7128755623157044e-06,
+   "Izz_cg": 2.0008888933290838e-06,
+   "editable": false
+  },
+  {
+   "name": "Blocker clevis plate (1.2 mm 304 stainless, laser cut, x2 identical):2 / Clevis plate",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "laser cut 304",
+   "mass_kg": 0.00942168226782969,
+   "printed_mass_kg": 0.00942168226782969,
+   "cg_m_stowed": [
+    -0.003870060214097815,
+    -0.018100000000000005,
+    -0.03797202453976825
+   ],
+   "Ixx_cg": 7.142478727308995e-07,
+   "Iyy_cg": 2.7128755623157044e-06,
+   "Izz_cg": 2.0008888933290838e-06,
+   "editable": false
+  },
+  {
+   "name": "Claw axle 3 x 39.2 (A2 dowel) + 2x E-clip DIN 6799-2.3:2 / Claw axle + E-clips",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.002390029443071405,
+   "printed_mass_kg": 0.002390029443071405,
+   "cg_m_stowed": [
+    0.020499999999796237,
+    3.6697296428564114e-18,
+    -0.0455
+   ],
+   "Ixx_cg": 3.546833663115888e-07,
+   "Iyy_cg": 3.593420203979338e-09,
+   "Izz_cg": 3.54683365847508e-07,
+   "editable": false
+  },
+  {
+   "name": "Claw axle 3 x 39.2 (A2 dowel) + 2x E-clip DIN 6799-2.3:3 / Claw axle + E-clips",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.002390029443071405,
+   "printed_mass_kg": 0.002390029443071405,
+   "cg_m_stowed": [
+    -0.020499999999796237,
+    -3.6697296428564114e-18,
+    -0.0455
+   ],
+   "Ixx_cg": 3.546833663115888e-07,
+   "Iyy_cg": 3.593420203979338e-09,
+   "Izz_cg": 3.54683365847508e-07,
+   "editable": false
+  },
+  {
+   "name": "Shoulder screw 4x10 M3 (SHLD040-010) (2):1 / Shoulder screw 4x10 M3 (SHLD040-010)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0018369783672454185,
+   "printed_mass_kg": 0.0018369783672454185,
+   "cg_m_stowed": [
+    0.027125625284988096,
+    0.0,
+    4.930567883074443e-13
+   ],
+   "Ixx_cg": 5.219676179714402e-09,
+   "Iyy_cg": 4.5114713730248705e-08,
+   "Izz_cg": 4.511471440435622e-08,
+   "editable": false
+  },
+  {
+   "name": "Shoulder screw 4x10 M3 (SHLD040-010) (2):2 / Shoulder screw 4x10 M3 (SHLD040-010)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0018369783672454185,
+   "printed_mass_kg": 0.0018369783672454185,
+   "cg_m_stowed": [
+    -0.027125625284988096,
+    0.0,
+    4.930567883074443e-13
+   ],
+   "Ixx_cg": 5.219676179714402e-09,
+   "Iyy_cg": 4.5114713730248705e-08,
+   "Izz_cg": 4.511471440435622e-08,
+   "editable": false
+  },
+  {
+   "name": "Bronze bush 4x6x9 (RS 521-7736, bonded):1 / Bronze bush 4x6x9 (RS 521-7736, bonded)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Bronze, sintered bush (8.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.001244070690821504,
+   "printed_mass_kg": 0.001244070690821504,
+   "cg_m_stowed": [
+    0.0233,
+    4.908263397320454e-19,
+    1.4639504207169524e-12
+   ],
+   "Ixx_cg": 8.086458968167275e-09,
+   "Iyy_cg": 1.244070612495628e-08,
+   "Izz_cg": 1.2440707169301297e-08,
+   "editable": false
+  },
+  {
+   "name": "Bronze bush 4x6x9 (RS 521-7736, bonded):2 / Bronze bush 4x6x9 (RS 521-7736, bonded)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Bronze, sintered bush (8.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.001244070690821504,
+   "printed_mass_kg": 0.001244070690821504,
+   "cg_m_stowed": [
+    -0.0233,
+    -4.908263397320454e-19,
+    1.4639504207169524e-12
+   ],
+   "Ixx_cg": 8.086458968167275e-09,
+   "Iyy_cg": 1.244070612495628e-08,
+   "Izz_cg": 1.2440707169301297e-08,
+   "editable": false
+  },
+  {
+   "name": "Tab pin 2 x 44 (A2 stainless dowel, E-clip grooves, x2):1 / Pin + 2x E-clip DIN 6799-1.5",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0011572408397874708,
+   "printed_mass_kg": 0.0011572408397874708,
+   "cg_m_stowed": [
+    0.025479999999843506,
+    0.001450000000000008,
+    -0.04968
+   ],
+   "Ixx_cg": 2.0620671105152493e-07,
+   "Iyy_cg": 7.279100998591591e-10,
+   "Izz_cg": 2.0620671095751725e-07,
+   "editable": false
+  },
+  {
+   "name": "Tab pin 2 x 44 (A2 stainless dowel, E-clip grooves, x2):2 / Pin + 2x E-clip DIN 6799-1.5",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0011572408397874708,
+   "printed_mass_kg": 0.0011572408397874708,
+   "cg_m_stowed": [
+    -0.025479999999843506,
+    -0.001450000000000008,
+    -0.04968
+   ],
+   "Ixx_cg": 2.0620671105152493e-07,
+   "Iyy_cg": 7.279100998591591e-10,
+   "Izz_cg": 2.0620671095751725e-07,
+   "editable": false
+  },
+  {
+   "name": "M2 ball stud 4.8 - drive (9 mm shank) (2):1 / M2 ball stud 4.8 - drive (9 mm shank)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006239241590311345,
+   "printed_mass_kg": 0.0006239241590311345,
+   "cg_m_stowed": [
+    0.02886790318082884,
+    -0.0012961912801548942,
+    0.017
+   ],
+   "Ixx_cg": 4.449643284108442e-09,
+   "Iyy_cg": 2.299008761728753e-09,
+   "Izz_cg": 5.610987952726331e-09,
+   "editable": false
+  },
+  {
+   "name": "M2 ball stud 4.8 - drive (9 mm shank) (2):2 / M2 ball stud 4.8 - drive (9 mm shank)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006239241590311345,
+   "printed_mass_kg": 0.0006239241590311345,
+   "cg_m_stowed": [
+    0.0012961912801548962,
+    0.02886790318082884,
+    0.017
+   ],
+   "Ixx_cg": 2.2990087617287543e-09,
+   "Iyy_cg": 4.449643284108441e-09,
+   "Izz_cg": 5.610987952726331e-09,
+   "editable": false
+  },
+  {
+   "name": "Blocker link 9.87 mm (1.5 mm 304 stainless, laser cut, x2):1 / Link",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "laser cut 304",
+   "mass_kg": 0.0006089707348685826,
+   "printed_mass_kg": 0.0006089707348685826,
+   "cg_m_stowed": [
+    0.024713732195493374,
+    0.021750000000000002,
+    -0.044835210010216106
+   ],
+   "Ixx_cg": 8.267424433102255e-09,
+   "Iyy_cg": 9.355342055550406e-09,
+   "Izz_cg": 1.3162816480238656e-09,
+   "editable": false
+  },
+  {
+   "name": "Blocker link 9.87 mm (1.5 mm 304 stainless, laser cut, x2):2 / Link",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "laser cut 304",
+   "mass_kg": 0.0006089707348685826,
+   "printed_mass_kg": 0.0006089707348685826,
+   "cg_m_stowed": [
+    -0.024713732195493367,
+    -0.021750000000000005,
+    -0.04483521001021609
+   ],
+   "Ixx_cg": 8.267424433102258e-09,
+   "Iyy_cg": 9.355342055550406e-09,
+   "Izz_cg": 1.316281648023866e-09,
+   "editable": false
+  },
+  {
+   "name": "M3 hex nut (2):1 / M3 hex nut",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039603604164313696,
+   "printed_mass_kg": 0.00039603604164313696,
+   "cg_m_stowed": [
+    0.0176,
+    -6.920741558449146e-19,
+    -3.455249430471321e-14
+   ],
+   "Ixx_cg": 2.0017695269243634e-09,
+   "Iyy_cg": 1.1909820579581698e-09,
+   "Izz_cg": 1.190982068943605e-09,
+   "editable": false
+  },
+  {
+   "name": "M3 hex nut (2):2 / M3 hex nut",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039603604164313696,
+   "printed_mass_kg": 0.00039603604164313696,
+   "cg_m_stowed": [
+    -0.0176,
+    6.920741558449146e-19,
+    -3.455249430471321e-14
+   ],
+   "Ixx_cg": 2.0017695269243634e-09,
+   "Iyy_cg": 1.1909820579581698e-09,
+   "Izz_cg": 1.190982068943605e-09,
+   "editable": false
+  },
+  {
+   "name": "Servo horn 6 mm (clamped alu, M2 tapped) (1):5 / Servo horn 6 mm (clamped alu, M2 tapped)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Aluminium 6061 (2.7 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039429358190362613,
+   "printed_mass_kg": 0.00039429358190362613,
+   "cg_m_stowed": [
+    0.023304777270330337,
+    0.02,
+    -0.035823694365798936
+   ],
+   "Ixx_cg": 4.369589615800855e-09,
+   "Iyy_cg": 5.7193174308343725e-09,
+   "Izz_cg": 1.6125902029692657e-09,
+   "editable": false
+  },
+  {
+   "name": "Servo horn 6 mm (clamped alu, M2 tapped) (1):6 / Servo horn 6 mm (clamped alu, M2 tapped)",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Aluminium 6061 (2.7 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039429358190362613,
+   "printed_mass_kg": 0.00039429358190362613,
+   "cg_m_stowed": [
+    -0.023304777270330337,
+    -0.02,
+    -0.03582369436579894
+   ],
+   "Ixx_cg": 4.369589615800855e-09,
+   "Iyy_cg": 5.7193174308343725e-09,
+   "Izz_cg": 1.6125902029692657e-09,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):1 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.02398895904619917,
+    0.021665776081424934,
+    -0.039917656715865266
+   ],
+   "Ixx_cg": 5.247425283520491e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.24742513306583e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):5 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.023988959046199156,
+    -0.021665776081424934,
+    -0.03991765671586527
+   ],
+   "Ixx_cg": 5.247425283520491e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.24742513306583e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):10 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.00899999999971916,
+    0.017865776081424933,
+    -0.0355
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):11 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.009000000000280842,
+    0.017865776081424933,
+    -0.0355
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):12 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.00899999999971916,
+    -0.017865776081424933,
+    -0.0355
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):13 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.009000000000280842,
+    -0.017865776081424933,
+    -0.0355
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):18 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.023000000000280844,
+    0.016665776081424936,
+    -0.014499999999999992
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):19 / M2x4 button head screw",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.023000000000280848,
+    -0.016665776081424936,
+    -0.014499999999999997
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 1.7766128687522462e-10,
+   "Izz_cg": 5.247425093570706e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):1 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.02724068480569235,
+    -0.00404414284081585,
+    0.01699999999974904
+   ],
+   "Ixx_cg": 2.404057896986842e-10,
+   "Iyy_cg": 2.4410318776277904e-10,
+   "Izz_cg": 2.384091594582638e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):2 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.004044142840815857,
+    0.027240684805692347,
+    0.01699999999974904
+   ],
+   "Ixx_cg": 2.4410318776277904e-10,
+   "Iyy_cg": 2.404057896986843e-10,
+   "Izz_cg": 2.384091594582638e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):3 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.009000000000250963,
+    0.016000000000000004,
+    -0.0355
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.4609978622004155e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):4 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.008999999999749039,
+    0.016000000000000004,
+    -0.0355
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.4609978622004155e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):5 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.009000000000250963,
+    -0.016000000000000004,
+    -0.0355
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.4609978622004155e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):6 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.008999999999749039,
+    -0.016000000000000004,
+    -0.0355
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.4609978622004155e-10,
+   "Izz_cg": 2.384091912414217e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):7 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.02299999999974919,
+    0.01399999999999988,
+    -0.014499999999999881
+   ],
+   "Ixx_cg": 2.384091594582664e-10,
+   "Iyy_cg": 2.4609978622004155e-10,
+   "Izz_cg": 2.384091912414238e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):8 / M2 heat-set insert M2x3",
+   "section": "Gimbal - cartridge (pitch)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.022999999999749096,
+    -0.014000000000000248,
+    -0.014499999999999246
+   ],
+   "Ixx_cg": 2.384091594582648e-10,
+   "Iyy_cg": 2.4609978622004093e-10,
+   "Izz_cg": 2.384091912414234e-10,
+   "editable": false
+  },
+  {
+   "name": "Outer Ring:1 / Outer Ring",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.010739380306224478,
+   "printed_mass_kg": 0.010417198897037743,
+   "cg_m_stowed": [
+    4.909247041269404e-16,
+    2.805284023582517e-17,
+    -3.670451365659118e-05
+   ],
+   "Ixx_cg": 4.739412106271018e-06,
+   "Iyy_cg": 4.260418284361629e-06,
+   "Izz_cg": 8.728392536522243e-06,
+   "editable": false
+  },
+  {
+   "name": "Shoulder screw 4x6 M3 (SHLD040-006):1 / Shoulder screw 4x6",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.001439881055831686,
+   "printed_mass_kg": 0.001439881055831686,
+   "cg_m_stowed": [
+    3.807068758829127e-19,
+    0.03488908280007756,
+    2.9198732623403465e-13
+   ],
+   "Ixx_cg": 2.071931911913583e-08,
+   "Iyy_cg": 4.425481608171013e-09,
+   "Izz_cg": 2.0719319690675202e-08,
+   "editable": false
+  },
+  {
+   "name": "Shoulder screw 4x6 M3 (SHLD040-006):2 / Shoulder screw 4x6",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.001439881055831686,
+   "printed_mass_kg": 0.001439881055831686,
+   "cg_m_stowed": [
+    -3.807068758829127e-19,
+    -0.03488908280007756,
+    2.9198732623403465e-13
+   ],
+   "Ixx_cg": 2.071931911913583e-08,
+   "Iyy_cg": 4.425481608171013e-09,
+   "Izz_cg": 2.0719319690675202e-08,
+   "editable": false
+  },
+  {
+   "name": "MF84ZZ flanged bearing 4x8x3 (1):1 / MF84ZZ flanged bearing 4x8x3",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Bearing steel (7.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0009580249098010642,
+   "printed_mass_kg": 0.0009580249098010642,
+   "cg_m_stowed": [
+    0.029395027624309393,
+    5.649474444429133e-19,
+    1.9043022478303948e-13
+   ],
+   "Ixx_cg": 1.0231176080479987e-08,
+   "Iyy_cg": 5.880079478130899e-09,
+   "Izz_cg": 5.880078156800695e-09,
+   "editable": false
+  },
+  {
+   "name": "MF84ZZ flanged bearing 4x8x3 (1):2 / MF84ZZ flanged bearing 4x8x3",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Bearing steel (7.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0009580249098010642,
+   "printed_mass_kg": 0.0009580249098010642,
+   "cg_m_stowed": [
+    -0.029395027624309393,
+    -5.649474444429133e-19,
+    1.9043022478303948e-13
+   ],
+   "Ixx_cg": 1.0231176080479987e-08,
+   "Iyy_cg": 5.880079478130899e-09,
+   "Izz_cg": 5.880078156800695e-09,
+   "editable": false
+  },
+  {
+   "name": "Bronze bush 4x6x4 (bonded, yaw):1 / Bronze bush 4x6x4",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Bronze, sintered bush (8.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0005529203070318273,
+   "printed_mass_kg": 0.0005529203070318273,
+   "cg_m_stowed": [
+    -1.104359264397007e-18,
+    0.03175,
+    -7.319776031368192e-13
+   ],
+   "Ixx_cg": 2.534218189934263e-09,
+   "Iyy_cg": 3.59398176363011e-09,
+   "Izz_cg": 2.5342177257807146e-09,
+   "editable": false
+  },
+  {
+   "name": "Bronze bush 4x6x4 (bonded, yaw):2 / Bronze bush 4x6x4",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Bronze, sintered bush (8.8 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0005529203070318273,
+   "printed_mass_kg": 0.0005529203070318273,
+   "cg_m_stowed": [
+    1.104359264397007e-18,
+    -0.03175,
+    -7.319776031368192e-13
+   ],
+   "Ixx_cg": 2.534218189934263e-09,
+   "Iyy_cg": 3.59398176363011e-09,
+   "Izz_cg": 2.5342177257807146e-09,
+   "editable": false
+  },
+  {
+   "name": "M3 hex nut (2):11 / M3 hex nut",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039603604164313696,
+   "printed_mass_kg": 0.00039603604164313696,
+   "cg_m_stowed": [
+    -1.0049881275537885e-16,
+    0.028550000000000193,
+    -3.40424225974347e-14
+   ],
+   "Ixx_cg": 1.1909820579580838e-09,
+   "Iyy_cg": 2.0017695269243675e-09,
+   "Izz_cg": 1.1909820689435335e-09,
+   "editable": false
+  },
+  {
+   "name": "M3 hex nut (2):12 / M3 hex nut",
+   "section": "Gimbal - outer ring (yaw)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039603604164313696,
+   "printed_mass_kg": 0.00039603604164313696,
+   "cg_m_stowed": [
+    4.7208107573301266e-17,
+    -0.028549999999999864,
+    -3.418080466690599e-14
+   ],
+   "Ixx_cg": 1.1909820579580838e-09,
+   "Iyy_cg": 2.0017695269243675e-09,
+   "Izz_cg": 1.1909820689435335e-09,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tube CF 14x12 x 260 (pultruded, x4):1 / Landing leg tube CF 14x12 x 260",
+   "section": "Landing legs",
+   "material": "Carbon fibre pultruded (1.55 g/cc)",
+   "process": "cut CF tube",
+   "mass_kg": 0.016458803912156914,
+   "printed_mass_kg": 0.016458803912156914,
+   "cg_m_stowed": [
+    0.03464823227814085,
+    0.03464823227814067,
+    0.13199999999999998
+   ],
+   "Ixx_cg": 9.306767828828328e-05,
+   "Iyy_cg": 9.306767828828317e-05,
+   "Izz_cg": 6.994991662666843e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tube CF 14x12 x 260 (pultruded, x4):2 / Landing leg tube CF 14x12 x 260",
+   "section": "Landing legs",
+   "material": "Carbon fibre pultruded (1.55 g/cc)",
+   "process": "cut CF tube",
+   "mass_kg": 0.016458803912156914,
+   "printed_mass_kg": 0.016458803912156914,
+   "cg_m_stowed": [
+    -0.03464823227814076,
+    0.03464823227814078,
+    0.13200000000000006
+   ],
+   "Ixx_cg": 9.306767828828321e-05,
+   "Iyy_cg": 9.306767828828313e-05,
+   "Izz_cg": 6.994991662666851e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tube CF 14x12 x 260 (pultruded, x4):3 / Landing leg tube CF 14x12 x 260",
+   "section": "Landing legs",
+   "material": "Carbon fibre pultruded (1.55 g/cc)",
+   "process": "cut CF tube",
+   "mass_kg": 0.016458803912156914,
+   "printed_mass_kg": 0.016458803912156914,
+   "cg_m_stowed": [
+    -0.0346482322781407,
+    -0.034648232278140824,
+    0.13200000000000017
+   ],
+   "Ixx_cg": 9.306767828828308e-05,
+   "Iyy_cg": 9.306767828828312e-05,
+   "Izz_cg": 6.994991662666862e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tube CF 14x12 x 260 (pultruded, x4):4 / Landing leg tube CF 14x12 x 260",
+   "section": "Landing legs",
+   "material": "Carbon fibre pultruded (1.55 g/cc)",
+   "process": "cut CF tube",
+   "mass_kg": 0.016458803912156914,
+   "printed_mass_kg": 0.016458803912156914,
+   "cg_m_stowed": [
+    0.03464823227814077,
+    -0.03464823227814073,
+    0.13199999999999995
+   ],
+   "Ixx_cg": 9.306767828828312e-05,
+   "Iyy_cg": 9.306767828828317e-05,
+   "Izz_cg": 6.994991662666843e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg knuckle (PAHT-CF, x4):1 / Landing leg knuckle",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.008095873121059994,
+   "printed_mass_kg": 0.007852996927428194,
+   "cg_m_stowed": [
+    0.033354749019661435,
+    0.036171193992796426,
+    0.0024683181649305798
+   ],
+   "Ixx_cg": 1.5431782039472587e-06,
+   "Iyy_cg": 1.521970692322081e-06,
+   "Izz_cg": 5.690268887069728e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg knuckle (PAHT-CF, x4):2 / Landing leg knuckle",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.008095873121059994,
+   "printed_mass_kg": 0.007852996927428194,
+   "cg_m_stowed": [
+    -0.03617119399279644,
+    0.03335474901966143,
+    0.0024683181649305876
+   ],
+   "Ixx_cg": 1.521970692322082e-06,
+   "Iyy_cg": 1.543178203947256e-06,
+   "Izz_cg": 5.690268887069734e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg knuckle (PAHT-CF, x4):3 / Landing leg knuckle",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.008095873121059994,
+   "printed_mass_kg": 0.007852996927428194,
+   "cg_m_stowed": [
+    -0.033354749019661414,
+    -0.03617119399279645,
+    0.002468318164930589
+   ],
+   "Ixx_cg": 1.543178203947255e-06,
+   "Iyy_cg": 1.5219706923220805e-06,
+   "Izz_cg": 5.690268887069745e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg knuckle (PAHT-CF, x4):4 / Landing leg knuckle",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.008095873121059994,
+   "printed_mass_kg": 0.007852996927428194,
+   "cg_m_stowed": [
+    0.03617119399279641,
+    -0.033354749019661435,
+    0.0024683181649305763
+   ],
+   "Ixx_cg": 1.5219706923220802e-06,
+   "Iyy_cg": 1.5431782039472568e-06,
+   "Izz_cg": 5.690268887069728e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tip cap + keeper tab (PAHT-CF, x4):1 / Landing leg tip cap + keeper tab",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0031514094204855374,
+   "printed_mass_kg": 0.003056867137870971,
+   "cg_m_stowed": [
+    0.03486630169685348,
+    0.035133922285658634,
+    0.2605023428157435
+   ],
+   "Ixx_cg": 3.252794614768406e-07,
+   "Iyy_cg": 3.3679534958359703e-07,
+   "Izz_cg": 1.649019889009708e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tip cap + keeper tab (PAHT-CF, x4):2 / Landing leg tip cap + keeper tab",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0031514094204855374,
+   "printed_mass_kg": 0.003056867137870971,
+   "cg_m_stowed": [
+    -0.03513392228565881,
+    0.03486630169685336,
+    0.2605023428157437
+   ],
+   "Ixx_cg": 3.3679534958359714e-07,
+   "Iyy_cg": 3.2527946147684007e-07,
+   "Izz_cg": 1.64901988900971e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tip cap + keeper tab (PAHT-CF, x4):3 / Landing leg tip cap + keeper tab",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0031514094204855374,
+   "printed_mass_kg": 0.003056867137870971,
+   "cg_m_stowed": [
+    -0.03486630169685321,
+    -0.03513392228565891,
+    0.2605023428157439
+   ],
+   "Ixx_cg": 3.252794614768399e-07,
+   "Iyy_cg": 3.3679534958359677e-07,
+   "Izz_cg": 1.6490198890097128e-07,
+   "editable": false
+  },
+  {
+   "name": "Landing leg tip cap + keeper tab (PAHT-CF, x4):4 / Landing leg tip cap + keeper tab",
+   "section": "Landing legs",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0031514094204855374,
+   "printed_mass_kg": 0.003056867137870971,
+   "cg_m_stowed": [
+    0.03513392228565885,
+    -0.03486630169685325,
+    0.2605023428157435
+   ],
+   "Ixx_cg": 3.3679534958359677e-07,
+   "Iyy_cg": 3.252794614768402e-07,
+   "Izz_cg": 1.649019889009708e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke (x4):1 / Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke",
+   "section": "Landing legs",
+   "material": "OVERRIDE M6 spring plunger 3 mm pin 3.0 g VERIFY (0.2568 cc)",
+   "process": "purchased",
+   "mass_kg": 0.002999999999999999,
+   "printed_mass_kg": 0.002999999999999999,
+   "cg_m_stowed": [
+    0.032957728093472166,
+    0.0635482054025104,
+    -0.018670000000000013
+   ],
+   "Ixx_cg": 2.9657848478862332e-08,
+   "Iyy_cg": 2.9657848479219793e-08,
+   "Izz_cg": 5.0436111514693424e-08,
+   "editable": false
+  },
+  {
+   "name": "Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke (x4):2 / Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke",
+   "section": "Landing legs",
+   "material": "OVERRIDE M6 spring plunger 3 mm pin 3.0 g VERIFY (0.2568 cc)",
+   "process": "purchased",
+   "mass_kg": 0.002999999999999999,
+   "printed_mass_kg": 0.002999999999999999,
+   "cg_m_stowed": [
+    -0.0635482054025104,
+    0.03295772809347218,
+    -0.018670000000000013
+   ],
+   "Ixx_cg": 2.9657848479219783e-08,
+   "Iyy_cg": 2.965784847886234e-08,
+   "Izz_cg": 5.0436111514693424e-08,
+   "editable": false
+  },
+  {
+   "name": "Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke (x4):3 / Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke",
+   "section": "Landing legs",
+   "material": "OVERRIDE M6 spring plunger 3 mm pin 3.0 g VERIFY (0.2568 cc)",
+   "process": "purchased",
+   "mass_kg": 0.002999999999999999,
+   "printed_mass_kg": 0.002999999999999999,
+   "cg_m_stowed": [
+    -0.03295772809347217,
+    -0.06354820540251038,
+    -0.018670000000000013
+   ],
+   "Ixx_cg": 2.965784847886233e-08,
+   "Iyy_cg": 2.9657848479219773e-08,
+   "Izz_cg": 5.0436111514693424e-08,
+   "editable": false
+  },
+  {
+   "name": "Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke (x4):4 / Leg lock: M6 spring plunger, 3 mm pin, 3 mm stroke",
+   "section": "Landing legs",
+   "material": "OVERRIDE M6 spring plunger 3 mm pin 3.0 g VERIFY (0.2568 cc)",
+   "process": "purchased",
+   "mass_kg": 0.002999999999999999,
+   "printed_mass_kg": 0.002999999999999999,
+   "cg_m_stowed": [
+    0.06354820540251038,
+    -0.03295772809347219,
+    -0.018670000000000013
+   ],
+   "Ixx_cg": 2.9657848479219777e-08,
+   "Iyy_cg": 2.9657848478862345e-08,
+   "Izz_cg": 5.0436111514693424e-08,
+   "editable": false
+  },
+  {
+   "name": "Leg hinge pin 3 x 44 A2 + 2 E-clips DIN 6799-2.3 (x4):1 / Leg hinge pin 3 x 44",
+   "section": "Landing legs",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0024570396143726836,
+   "printed_mass_kg": 0.0024570396143726836,
+   "cg_m_stowed": [
+    0.034648232278029927,
+    0.03464823227802993,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.0027432251206256e-07,
+   "Iyy_cg": 2.002743225120626e-07,
+   "Izz_cg": 3.977844759911204e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg hinge pin 3 x 44 A2 + 2 E-clips DIN 6799-2.3 (x4):2 / Leg hinge pin 3 x 44",
+   "section": "Landing legs",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0024570396143726836,
+   "printed_mass_kg": 0.0024570396143726836,
+   "cg_m_stowed": [
+    -0.034648232278029927,
+    0.03464823227802993,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.0027432251206256e-07,
+   "Iyy_cg": 2.002743225120626e-07,
+   "Izz_cg": 3.977844759911204e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg hinge pin 3 x 44 A2 + 2 E-clips DIN 6799-2.3 (x4):3 / Leg hinge pin 3 x 44",
+   "section": "Landing legs",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0024570396143726836,
+   "printed_mass_kg": 0.0024570396143726836,
+   "cg_m_stowed": [
+    -0.034648232278029927,
+    -0.034648232278029927,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.0027432251206256e-07,
+   "Iyy_cg": 2.0027432251206248e-07,
+   "Izz_cg": 3.977844759911204e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg hinge pin 3 x 44 A2 + 2 E-clips DIN 6799-2.3 (x4):4 / Leg hinge pin 3 x 44",
+   "section": "Landing legs",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0024570396143726836,
+   "printed_mass_kg": 0.0024570396143726836,
+   "cg_m_stowed": [
+    0.034648232278029927,
+    -0.03464823227802994,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.0027432251206248e-07,
+   "Iyy_cg": 2.002743225120627e-07,
+   "Izz_cg": 3.977844759911204e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg torsion spring 0.7 mm music wire, 6 coils (x4):1 / Leg torsion spring 0.7 mm music wire, 6 coils",
+   "section": "Landing legs",
+   "material": "OVERRIDE torsion spring 0.7 wire 6 coils 0.6 g VERIFY (0.0406 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006,
+   "printed_mass_kg": 0.0006,
+   "cg_m_stowed": [
+    0.04445933886665833,
+    0.024837125688731636,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.36012479459494e-09,
+   "Iyy_cg": 2.3601247945946222e-09,
+   "Izz_cg": 2.175500082161579e-09,
+   "editable": false
+  },
+  {
+   "name": "Leg torsion spring 0.7 mm music wire, 6 coils (x4):2 / Leg torsion spring 0.7 mm music wire, 6 coils",
+   "section": "Landing legs",
+   "material": "OVERRIDE torsion spring 0.7 wire 6 coils 0.6 g VERIFY (0.0406 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006,
+   "printed_mass_kg": 0.0006,
+   "cg_m_stowed": [
+    -0.02483712568873163,
+    0.044459338866658336,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.3601247945946222e-09,
+   "Iyy_cg": 2.36012479459494e-09,
+   "Izz_cg": 2.175500082161579e-09,
+   "editable": false
+  },
+  {
+   "name": "Leg torsion spring 0.7 mm music wire, 6 coils (x4):3 / Leg torsion spring 0.7 mm music wire, 6 coils",
+   "section": "Landing legs",
+   "material": "OVERRIDE torsion spring 0.7 wire 6 coils 0.6 g VERIFY (0.0406 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006,
+   "printed_mass_kg": 0.0006,
+   "cg_m_stowed": [
+    -0.04445933886665833,
+    -0.024837125688731625,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.360124794594939e-09,
+   "Iyy_cg": 2.3601247945946214e-09,
+   "Izz_cg": 2.175500082161579e-09,
+   "editable": false
+  },
+  {
+   "name": "Leg torsion spring 0.7 mm music wire, 6 coils (x4):4 / Leg torsion spring 0.7 mm music wire, 6 coils",
+   "section": "Landing legs",
+   "material": "OVERRIDE torsion spring 0.7 wire 6 coils 0.6 g VERIFY (0.0406 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0006,
+   "printed_mass_kg": 0.0006,
+   "cg_m_stowed": [
+    0.024837125688731622,
+    -0.044459338866658336,
+    -0.008000000000000002
+   ],
+   "Ixx_cg": 2.3601247945946222e-09,
+   "Iyy_cg": 2.36012479459494e-09,
+   "Izz_cg": 2.175500082161579e-09,
+   "editable": false
+  },
+  {
+   "name": "Landing leg foot: EPS ball 25 mm (x4):1 / Landing leg foot: EPS ball 25 mm",
+   "section": "Landing legs",
+   "material": "EPS foam ball (0.020 g/cc)",
+   "process": "purchased (EPS craft ball)",
+   "mass_kg": 0.00015281741355615392,
+   "printed_mass_kg": 0.00015281741355615392,
+   "cg_m_stowed": [
+    0.03783041478994804,
+    0.03783041478994769,
+    0.2799860244720767
+   ],
+   "Ixx_cg": 9.532992924955635e-09,
+   "Iyy_cg": 9.532992924955651e-09,
+   "Izz_cg": 1.0140160763058198e-08,
+   "editable": false
+  },
+  {
+   "name": "Landing leg foot: EPS ball 25 mm (x4):2 / Landing leg foot: EPS ball 25 mm",
+   "section": "Landing legs",
+   "material": "EPS foam ball (0.020 g/cc)",
+   "process": "purchased (EPS craft ball)",
+   "mass_kg": 0.00015281741355615392,
+   "printed_mass_kg": 0.00015281741355615392,
+   "cg_m_stowed": [
+    -0.03783041478994787,
+    0.037830414789947905,
+    0.2799860244720769
+   ],
+   "Ixx_cg": 9.532992924955656e-09,
+   "Iyy_cg": 9.53299292495562e-09,
+   "Izz_cg": 1.0140160763058212e-08,
+   "editable": false
+  },
+  {
+   "name": "Landing leg foot: EPS ball 25 mm (x4):3 / Landing leg foot: EPS ball 25 mm",
+   "section": "Landing legs",
+   "material": "EPS foam ball (0.020 g/cc)",
+   "process": "purchased (EPS craft ball)",
+   "mass_kg": 0.00015281741355615392,
+   "printed_mass_kg": 0.00015281741355615392,
+   "cg_m_stowed": [
+    -0.03783041478994774,
+    -0.03783041478994799,
+    0.2799860244720771
+   ],
+   "Ixx_cg": 9.532992924955613e-09,
+   "Iyy_cg": 9.532992924955646e-09,
+   "Izz_cg": 1.0140160763058228e-08,
+   "editable": false
+  },
+  {
+   "name": "Landing leg foot: EPS ball 25 mm (x4):4 / Landing leg foot: EPS ball 25 mm",
+   "section": "Landing legs",
+   "material": "EPS foam ball (0.020 g/cc)",
+   "process": "purchased (EPS craft ball)",
+   "mass_kg": 0.00015281741355615392,
+   "printed_mass_kg": 0.00015281741355615392,
+   "cg_m_stowed": [
+    0.03783041478994792,
+    -0.03783041478994779,
+    0.2799860244720767
+   ],
+   "Ixx_cg": 9.532992924955645e-09,
+   "Iyy_cg": 9.532992924955623e-09,
+   "Izz_cg": 1.0140160763058198e-08,
+   "editable": false
+  },
+  {
+   "name": "KST X08H Plus (envelope - verify):9 / KST X08H Plus (envelope - verify)",
+   "section": "Leg keeper (ring + servo)",
+   "material": "OVERRIDE KST X08H Plus 9.5 g (envelope 3.290 cc)",
+   "process": "purchased",
+   "mass_kg": 0.009500127766274334,
+   "printed_mass_kg": 0.009500127766274334,
+   "cg_m_stowed": [
+    -0.005717056690310312,
+    0.028000000000000004,
+    0.2339061217656793
+   ],
+   "Ixx_cg": 2.867754737321664e-07,
+   "Iyy_cg": 7.197337557681155e-07,
+   "Izz_cg": 5.342630284603809e-07,
+   "editable": false
+  },
+  {
+   "name": "Leg keeper ring (PAHT-CF):1 / Keeper ring",
+   "section": "Leg keeper (ring + servo)",
+   "material": "PAHT-CF (Bambu, 1.06 g/cc)",
+   "process": "FDM print",
+   "mass_kg": 0.0042784900345930145,
+   "printed_mass_kg": 0.0041501353335552235,
+   "cg_m_stowed": [
+    -0.0004125545999061778,
+    0.0003448138997497134,
+    0.24950000324374405
+   ],
+   "Ixx_cg": 2.4363061322940226e-06,
+   "Iyy_cg": 2.4257317085073877e-06,
+   "Izz_cg": 4.855740527619772e-06,
+   "editable": false
+  },
+  {
+   "name": "Servo horn 6 mm (clamped alu, M2 tapped) (1):7 / Servo horn 6 mm (clamped alu, M2 tapped)",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Aluminium 6061 (2.7 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00039429358190362613,
+   "printed_mass_kg": 0.00039429358190362613,
+   "cg_m_stowed": [
+    4.751539056278313e-19,
+    0.029848986296422124,
+    0.24449999999999997
+   ],
+   "Ixx_cg": 4.4488032405060635e-09,
+   "Iyy_cg": 1.5333765782640595e-09,
+   "Izz_cg": 5.7193174308343725e-09,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):32 / M2x4 button head screw",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    0.008000000000280836,
+    0.027999999999999997,
+    0.241165776081425
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2x4 button head screw (ISO 7380, A2):33 / M2x4 button head screw",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001828819258424965,
+   "printed_mass_kg": 0.0001828819258424965,
+   "cg_m_stowed": [
+    -0.019499999999719162,
+    0.027999999999999997,
+    0.24116577608142495
+   ],
+   "Ixx_cg": 5.247425323015613e-10,
+   "Iyy_cg": 5.247425093570706e-10,
+   "Izz_cg": 1.7766128687522462e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):25 / M2 heat-set insert M2x3",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    0.00799999999974904,
+    0.027999999999999997,
+    0.2385
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.384091912414217e-10,
+   "Izz_cg": 2.4609978622004155e-10,
+   "editable": false
+  },
+  {
+   "name": "M2 heat-set insert (M2 x 3) (1):26 / M2 heat-set insert M2x3",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Brass, heat-set insert (8.5 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.0001538123763197628,
+   "printed_mass_kg": 0.0001538123763197628,
+   "cg_m_stowed": [
+    -0.01950000000025096,
+    0.027999999999999997,
+    0.2385
+   ],
+   "Ixx_cg": 2.384091594582638e-10,
+   "Iyy_cg": 2.384091912414217e-10,
+   "Izz_cg": 2.4609978622004155e-10,
+   "editable": false
+  },
+  {
+   "name": "Keeper drive: M2x8 set screw ISO 4026 A2 (in horn):1 / Keeper drive: M2x8 set screw ISO 4026 A2",
+   "section": "Leg keeper (ring + servo)",
+   "material": "Stainless 304/A2 (7.9 g/cc)",
+   "process": "purchased",
+   "mass_kg": 0.00012707113965239406,
+   "printed_mass_kg": 0.00012707113965239406,
+   "cg_m_stowed": [
+    1.6732643960130878e-13,
+    0.03400000000000001,
+    0.24749999999999997
+   ],
+   "Ixx_cg": 6.980441284711264e-10,
+   "Iyy_cg": 6.980441232195221e-10,
+   "Izz_cg": 4.0662762063378084e-11,
+   "editable": false
+  },
+  {
+   "name": "Ascent F15-0 (dummy):1 / Ascent F15-0 (dummy)",
+   "section": "Motor - ascent",
+   "material": "OVERRIDE Estes F15-0 loaded 94.0 g (75.2993 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0939999544570931,
+   "printed_mass_kg": 0.0939999544570931,
+   "cg_m_stowed": [
+    -3.032471302744512e-12,
+    0.0,
+    -0.077
+   ],
+   "Ixx_cg": 0.00010674282360223324,
+   "Iyy_cg": 0.00010674282232603176,
+   "Izz_cg": 9.881744574201186e-06,
+   "editable": false
+  },
+  {
+   "name": "Landing F15-0 (dummy):1 / Landing F15-0 (dummy)",
+   "section": "Motor - landing",
+   "material": "OVERRIDE Estes F15-0 loaded 94.0 g (75.2993 cc)",
+   "process": "purchased",
+   "mass_kg": 0.0939999544570931,
+   "printed_mass_kg": 0.0939999544570931,
+   "cg_m_stowed": [
+    -3.032471302744512e-12,
+    0.0,
+    0.049
+   ],
+   "Ixx_cg": 0.00010674282360223315,
+   "Iyy_cg": 0.00010674282232603168,
+   "Izz_cg": 9.881744574201186e-06,
+   "editable": false
+  },
+  {
+   "name": "PLACEHOLDER roll reaction wheel (future)",
+   "section": "Placeholders (editable)",
+   "material": "-",
+   "process": "-",
+   "mass_kg": 0.06,
+   "printed_mass_kg": 0.06,
+   "cg_m_stowed": [
+    0.0,
+    0.0,
+    0.2045
+   ],
+   "Ixx_cg": 2.0835000000000003e-05,
+   "Iyy_cg": 2.0835000000000003e-05,
+   "Izz_cg": 3.2670000000000004e-05,
+   "editable": true
+  },
+  {
+   "name": "PLACEHOLDER avionics (FC + IMU + GNSS + baro)",
+   "section": "Placeholders (editable)",
+   "material": "-",
+   "process": "-",
+   "mass_kg": 0.04,
+   "printed_mass_kg": 0.04,
+   "cg_m_stowed": [
+    0.0,
+    0.0,
+    0.335
+   ],
+   "Ixx_cg": 9.666666666666668e-06,
+   "Iyy_cg": 1.3333333333333335e-05,
+   "Izz_cg": 2.0333333333333334e-05,
+   "editable": true
+  },
+  {
+   "name": "PLACEHOLDER battery (2S ~450-500 mAh LiPo)",
+   "section": "Placeholders (editable)",
+   "material": "-",
+   "process": "-",
+   "mass_kg": 0.035,
+   "printed_mass_kg": 0.035,
+   "cg_m_stowed": [
+    0.0,
+    0.0,
+    0.32
+   ],
+   "Ixx_cg": 3.28125e-06,
+   "Iyy_cg": 9.479166666666667e-06,
+   "Izz_cg": 1.1447916666666666e-05,
+   "editable": true
+  },
+  {
+   "name": "PLACEHOLDER wiring + connectors",
+   "section": "Placeholders (editable)",
+   "material": "-",
+   "process": "-",
+   "mass_kg": 0.01,
+   "printed_mass_kg": 0.01,
+   "cg_m_stowed": [
+    0.0,
+    0.0,
+    0.2
+   ],
+   "Ixx_cg": 4.5e-06,
+   "Iyy_cg": 4.5e-06,
+   "Izz_cg": 9e-06,
+   "editable": true
+  }
+ ],
+ "thrust_to_weight_state_B": {
+  "mass_kg": 0.90629425597426,
+  "avg_14.38N": 1.617964479633541,
+  "peak_25.26N": 2.8421267562964707,
+  "plateau_min_13.0N": 1.4626938967479857,
+  "blocker_floor_0.6x13N": 0.8776163380487914,
+  "liftoff_avg": 1.4659206251228138,
+  "extra_mass_kg_to_plateau_TW_1.3": 0.1134219570036682,
+  "hover_capable_mass_range_kg": [
+   0.7953786461227841,
+   1.3256310768713069
+  ]
+ },
+ "rocket_cfg_suggested": {
+  "body_diameter": 0.0795,
+  "body_length": 0.639,
+  "dry_mass": 0.812294301517167,
+  "dry_cg": 0.259566160490115,
+  "dry_inertia_pitch": 0.016971697383016064,
+  "dry_inertia_roll": 0.000994035140741575,
+  "dry_cg_legs_deployed": 0.2355746602461386,
+  "dry_inertia_pitch_legs_deployed": 0.02126720577105286,
+  "dry_inertia_roll_legs_deployed": 0.004124041007819654,
+  "motor_position": 0.05700000000000001,
+  "landing_motor_centre_actual": 0.183,
+  "gimbal_position": 0.134,
+  "gimbal_max_deg": 8,
+  "cg_offset": 0.0010431348225182682,
+  "leg_span": 0.597,
+  "leg_drop_below_claws": 0.0965,
+  "leg_drop_below_ascent_motor_end": 0.029799999999999993,
+  "leg_drop_below_landing_nozzle": 0.1558
+ }
+}

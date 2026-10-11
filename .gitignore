@@ -1,0 +1,11 @@
+# Scratch output from CAD checks and renders
+CAD/Designs/v3_checks/
+# Third-party reference documents (not ours to redistribute)
+CAD/Reference_Models/
+# Internal working notes
+CAD/Designs/HANDOFF_rocket_body.md
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp

@@ -1,0 +1,38 @@
+Part,Section,Qty,Pieces (incl. clips/links),Material,Process,Spec / standard,Mass each g,Mass total g,Printed mass g (x0.97),Filament g (+5%),Print orientation,Print time h (est.)
+"Lower shell: reaction-wheel bay tube, crush-rib bore at bottom, spigot + 6 insert bosses at top",Forward,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, 0.4 nozzle, 0.2 mm, 3 walls; brim 5 mm + glue",79.929,79.93,77.5,81.0,"upright, spigot up; 218 mm tall; boss chamfers 45 deg, no supports",4.5
+"Upper shell: avionics bay tube + 1.5:1 tangent ogive nose, one piece (crush-rib bore, 3 baro ports)",Forward,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, 0.4 nozzle, 0.2 mm, 3 walls (1.2 mm = solid wall); brim 5 mm + glue; min layer time 8 s",70.465,70.46,68.4,72.0,"nose up, standing on bottom edge; 243 mm tall (H2D limit 325); no supports",4.5
+"Deck D75.8 x 2 (wheel deck z120 + avionics deck z300, identical)",Forward,2,2,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, 100% (2 mm = 10 layers solid)",9.432,18.86,9.1,10.0,flat on bed,0.8
+Leg tube CF 14x12 x 260 mm,Legs,4,4,Carbon fibre pultruded (1.55 g/cc),cut CF tube,"pultruded/roll-wrapped CF tube 14 OD x 12 ID, cut with a fine blade, scuff + bond both ends",16.459,65.84,,,,
+Leg knuckle (hinge eye + 30 mm tube socket + lock boss/ramp),Legs,4,4,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, 5 walls, 50% gyroid, 100% around the 3.2 pivot bore and the 3.2 plunger hole; ream both; bond tube with DP420-class epoxy",8.096,32.38,7.9,8.0,on its side (pivot axis vertical) so the lock boss is in XY,0.9
+Leg tip cap + keeper tab + foot spigot,Legs,4,4,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,PAHT-CF 100%; tab hole 3.0 mm (peg 2.4); bonded on tube,3.151,12.61,3.1,3.0,"upright (socket axis vertical), tab in XY",0.4
+"Leg lock spring plunger M6, 3 mm pin, 3 mm stroke",Legs,4,4,datasheet mass: M6 spring plunger 3 mm pin 3.0 g VERIFY (0.2568 cc),purchased,"stainless indexing/spring plunger with plain pin (not a ball), threaded into the +y cheek (5.0 printed hole, tap M6), threadlock; mass VERIFY",3.0,12.0,,,,
+Leg hinge pin 3 x 44 + 2 E-clips,Legs,4,12,Stainless 304/A2 (7.9 g/cc),purchased,"ISO 2338 3 mm A2 dowel, 2 grooves, + 2x DIN 6799-2.3 (same as claw axles)",2.457,9.83,,,,
+"Leg deploy torsion spring 0.7 wire, 6 coils, ID 3.3, 180 deg legs",Legs,4,4,datasheet mass: torsion spring 0.7 wire 6 coils 0.6 g VERIFY (0.0406 cc),purchased,"music wire torsion spring, ~0.06 N m at full deploy (bench-tune); one leg on the stop bar, one on the knuckle",0.6,2.4,,,,
+"Foot: EPS craft ball 25 mm (glued on spigot, replace when crushed)",Legs,4,4,EPS foam ball (0.020 g/cc),purchased,"expanded-polystyrene craft ball D25, drill 8 mm x 11 deep, glue with foam-safe CA/epoxy",0.153,0.61,,,,
+Leg keeper ring with 4 integral printed pegs (bayonet-installed),Keeper,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF 100%, 3 mm thick; arc pegs D2.4 x ~8 mm printed in-plane",4.278,4.28,4.2,4.0,flat,0.4
+Keeper drive stud: M2x8 set screw in the horn,Keeper,1,1,Stainless 304/A2 (7.9 g/cc),purchased,"ISO 4026 M2x8 A2, threadlocked into the horn tapped hole, rides in the ring drive slot",0.127,0.13,,,,
+Aft airframe / thrust structure (v3 + body joint),Aft,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, 0.4 hardened nozzle, 0.2 mm, 4 walls, 5 top/bottom, 15% gyroid",109.388,109.39,106.1,111.0,"upright, spigot up (z+); boss chamfers 45 deg self-supporting; no supports",7.5
+Servo KST X08H Plus (TVC),Aft,3,3,datasheet mass: KST X08H Plus 9.5 g (envelope 3.290 cc),purchased,"KST X08H Plus, 9.5 g listed (rotorama); verify",9.5,28.5,,,,
+TVC pushrod 33.5 c-c (M2 rod + 2 metal ball links),Aft,2,6,datasheet mass: pushrod assy 1.9 g VERIFY (0.3467 cc),purchased,M2 threaded rod + 2x 4.8 mm metal ball links; mass VERIFY,1.9,3.8,,,,
+"M2 ball stud 4.8, 5 mm shank",Aft,2,2,Stainless 304/A2 (7.9 g/cc),purchased,"4.8 mm ball, M2",0.525,1.05,,,,
+"Servo horn 6 mm, clamped, M2 tapped",Aft/Gimbal,5,5,Aluminium 6061 (2.7 g/cc),purchased,"KST-spline clamp horn, 6061 Al",0.394,1.97,,,,
+Cartridge (sleeve + inner ring + lugs),Gimbal,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, as above",66.908,66.91,64.9,68.0,as previously printed (unchanged),6.0
+Blocker claw (crescent),Gimbal,2,2,Macor (2.52 g/cc),machined,Macor machinable glass-ceramic,31.945,63.89,,,,
+"Servo KST X08H Plus (blocker, lower ear trimmed)",Gimbal,2,2,datasheet mass: KST X08H Plus trimmed 9.5 g (envelope 3.2336 cc),purchased,"KST X08H Plus, ear trimmed on assembly",9.5,19.0,,,,
+Blocker clevis plate,Gimbal,2,2,Stainless 304/A2 (7.9 g/cc),laser cut,1.2 mm 304 2B sheet,9.422,18.84,,,,
+Outer ring (yaw),Gimbal,1,1,"PAHT-CF (Bambu, 1.06 g/cc)",FDM print,"PAHT-CF, as above",10.739,10.74,10.4,11.0,flat (unchanged),1.0
+Claw axle 3 x 39.2 dowel + 2 E-clips,Gimbal,2,6,Stainless 304/A2 (7.9 g/cc),purchased,"ISO 2338 3 mm A2 dowel, grooved + 2x DIN 6799-2.3",2.39,4.78,,,,
+Flanged bearing MF84ZZ 4x8x3,Gimbal,4,4,Bearing steel (7.8 g/cc),purchased,"MF84ZZ, shielded, chrome steel",0.958,3.83,,,,
+"Shoulder screw 4x10, M3 (pitch)",Gimbal,2,2,Stainless 304/A2 (7.9 g/cc),purchased,SHLD040-010 (ISO 7379 style),1.837,3.67,,,,
+"Shoulder screw 4x6, M3 (yaw)",Gimbal,2,2,Stainless 304/A2 (7.9 g/cc),purchased,SHLD040-006 (ISO 7379 style),1.44,2.88,,,,
+Sintered bronze bush 4x6x9 (bonded),Gimbal,2,2,"Bronze, sintered bush (8.8 g/cc)",purchased,RS 521-7736,1.244,2.49,,,,
+Tab pin 2 x 44 dowel + 2 E-clips,Gimbal,2,6,Stainless 304/A2 (7.9 g/cc),purchased,"ISO 2338 2 mm A2 dowel, grooved + 2x DIN 6799-1.5",1.157,2.31,,,,
+Hex nut M3,Gimbal,4,4,Stainless 304/A2 (7.9 g/cc),purchased,ISO 4032 M3 A2 (nyloc ISO 10511 recommended),0.396,1.58,,,,
+"M2 ball stud 4.8, 9 mm shank",Gimbal,2,2,Stainless 304/A2 (7.9 g/cc),purchased,"4.8 mm ball, M2",0.624,1.25,,,,
+Blocker link 9.87 c-c,Gimbal,2,2,Stainless 304/A2 (7.9 g/cc),laser cut,1.5 mm 304 sheet,0.609,1.22,,,,
+Sintered bronze bush 4x6x4 (bonded),Gimbal,2,2,"Bronze, sintered bush (8.8 g/cc)",purchased,oil-impregnated sintered bronze 4x6x4,0.553,1.11,,,,
+Button head screw M2x4,All,26,26,Stainless 304/A2 (7.9 g/cc),purchased,ISO 7380-1 M2x4 A2,0.183,4.75,,,,
+Heat-set insert M2 x 3,All,26,26,"Brass, heat-set insert (8.5 g/cc)",purchased,"brass, OD 3.6, L 3.0, hole 3.2 (CNC Kitchen M2x3 type)",0.154,4.0,,,,
+"Estes F15-0 (ascent, jettisoned)",Motor,1,1,datasheet mass: Estes F15-0 loaded 94.0 g (75.2993 cc),purchased,"Estes F15-0, 94.0 g loaded / 33.0 g burnt (NAR cert)",94.0,94.0,,,,
+Estes F15-0 (landing),Motor,1,1,datasheet mass: Estes F15-0 loaded 94.0 g (75.2993 cc),purchased,"Estes F15-0, 94.0 g loaded / 33.0 g burnt (NAR cert)",94.0,94.0,,,,
+TOTAL,,,153,,,,,855.3,,411,16 prints,30.7
